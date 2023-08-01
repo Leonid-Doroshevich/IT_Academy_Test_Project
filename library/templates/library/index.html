@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Добро пожаловать на главную страницу!</h1>
+    <p>На этой странице вы можете:</p>
+    <ul>
+        <li><a href="{% url 'create_author' %}">Создать нового автора</a></li>
+        <li><a href="{% url 'create_book' %}">Создать новую книгу</a></li>
+        <li><a href="{% url 'author_list' %}">Просмотреть список авторов</a></li>
+        <li><a href="{% url 'book_list' %}">Просмотреть список книг</a></li>
+    </ul>
+
+</body>
+
+</html>

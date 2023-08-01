@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Информация о книге</h1>
+    <p>Название: {{ book.title }}</p>
+    <p>Описание: {{ book.description }}</p>
+    <p>Дата публикации: {{ book.publication_date }}</p>
+    {% if book.cover_photo %}
+    <img src="{{ book.cover_photo.url }}" alt="Обложка книги" width="200">
+    {% else %}
+    <p>Фото не доступно</p>
+    {% endif %}
+    {% if book.authors.all %}
+    <p>Авторы:</p>
+    <ul>
+        {% for author in book.authors.all %}
+            <li><a href="{% url 'author_detail' author.id %}">{{ author.full_name }}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <p>Авторы не указаны</p>
+{% endif %}
+
+</body>
+</html>

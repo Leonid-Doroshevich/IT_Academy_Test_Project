@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Автор</title>
+</head>
+
+<body>
+    <h1>Информация об авторе</h1>
+    <p>Имя: {{ author.first_name }}</p>
+    <p>Фамилия: {{ author.last_name }}</p>
+    <p>Страна рождения: {{ author.country_of_birth }}</p>
+    <p>Дата рождения: {{ author.date_of_birth }}</p>
+    {% if author.date_of_death %}
+    <p>Дата смерти: {{ author.date_of_death }}</p>
+    {% endif %}
+    {% if author.photo %}
+    <img src="{{ author.photo.url }}" alt="{{ author.full_name }}" width="200">
+    {% else %}
+    <p>Фото не доступно</p>
+    {% endif %}
+    <h2>Книги автора:</h2>
+    {% if books %}
+    <ul>
+        {% for book in books %}
+        <li><a href="{% url 'book_detail' book.id %}">{{ book.title }}</a></li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>Книги автора не найдены</p>
+    {% endif %}
+
+</body>
+
+</html>
